@@ -1,0 +1,48 @@
+// The First method uses Brute Forcing
+
+Time COmplexity: O(n^2)
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[]arr={};
+        for (int i =0 ; i<nums.length;i++){
+            for (int j=i+1 ; j<nums.length;j++) {
+                if(i==j){
+                    continue;
+                }
+                if(nums[i]+nums[j]==target){
+                    return new int[]{i, j};
+                }
+            }
+        }
+       
+        return new int[]{0, 0};
+
+    }
+}
+
+
+// The second Solution is More Optimized Solution Using HashMap.
+
+Time COmplexity: O(n)
+
+
+import java.util.HashMap;
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i =0 ; i<nums.length;i++){
+            int complement= target-nums[i];
+            if (map.containsKey(complement)){
+                return new int[]{map.get(complement),i};
+            }
+
+            map.put(nums[i],i);
+        }
+
+       
+        return new int[]{0, 0};
+
+    }
+}
+
